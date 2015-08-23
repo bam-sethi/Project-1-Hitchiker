@@ -3,7 +3,8 @@ $(document).ready(function(){
 
 
 $("#play-button").on('click',function(){
-  randomPos();
+  var limit = 5;
+  for(var i = 0; i < limit; i ++){ randomPos(); };
   clickSpaceShip();
 
 });
@@ -15,20 +16,14 @@ var position = $('#ship1').position();
 
 ///generates a random position on the board, applies it to ship every 2 secs
 function randomPos(){
-  var limit = 3;
-  for(var i = 0; i < limit; i ++){
+  // for(var i = 0; i < limit; i ++){
   var newLeft = Math.floor(Math.random() * $('#board').width());
   console.log(newLeft)
   var newTop = Math.floor(Math.random() * $('#board').height());
   $("#ship1").css({'left': newLeft, 'top': newTop})
-
-  // debugger;
-  }
-    // debugger;
-    setTimeout(randomPos, 2000);
+  setTimeout(randomPos, 2000);
+    // setTimeout(randomPos, 2000);
 }
-
-
 });
 
 
