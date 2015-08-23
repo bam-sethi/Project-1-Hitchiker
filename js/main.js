@@ -37,10 +37,10 @@ function randomPos(){
 //if ship is clicked add to score
 //else show ship again
 
+
+//Hide and Show space ship on Click 
+//Count Score
 var score = 0;
-
-//Click the Space ship and it dissapears
-
 function clickSpaceShip(event){
   var clickShip = $('#ship1').on('click', function(){
       console.log(this);
@@ -51,11 +51,27 @@ function clickSpaceShip(event){
         $("#ship1").hide().delay(300).queue(function(n) {
         $(this).show(); n();
         });
+        score++;
+        getScore()
     }
-      
-    })
+  })
 };
-        // score++;
-        // console.log(score)
+
+function getScore(){
+console.log(score)
+var sum = score * 10;
+console.log(sum);
+var map = $('#right-col').html("Your Score: " + sum);
+}
+
+
+
+
+
+
+
+
+
+
 
 

@@ -46,8 +46,10 @@ h1{
 .box3{
   width: 200px;
   display: inline-block;
-  margin-left: auto;
+  margin-left: 0 auto;
+  font-size: 100px;
   float: right;
+  vertical-align: middle;
 }
 button{
   border: none;
