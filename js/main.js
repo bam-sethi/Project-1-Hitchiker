@@ -1,20 +1,22 @@
 $(document).ready(function(){
-  
+    startScreen();
+$("#play-button").one('click',function(){
+  randomPos();
+  clickSpaceShip();
+});
 
+function startScreen() {
+  var startGame = '<div id = "start-screen">INSTRUCTIONS:<button class="play" id="play-button">PLAY</button></div>';
+  var start = $('#board').html(startGame);
 
-  $("#play-button").one('click',function(){
-    randomPos();
-    clickSpaceShip();
-  });
-
-
+}
 
 var ship1 = '<div id ="ship1"></div>';
 $("#board").append(ship1);
 var position = $('#ship1').position();
 
 ///generates a random position on the board, applies it to ship every 2 secs
-  var count = 0;
+var count = 0;
 function randomPos(){
   count++;
   // console.log(count);
@@ -25,14 +27,23 @@ function randomPos(){
   var time = setTimeout(randomPos, 1500);
     // debugger;
     ///change count to higher num
-    if (count === 5){
+    if (count === 4){
       console.log('end')
       clearTimeout(time);
+      endScreen();
+
     }
 };
 
 });//end
 
+
+function endScreen() {
+  var gameOver = '<div id ="game-over">GAME OVER<button class="play" id="play-again">PLAY AGAIN</button></div>'
+  var end = $('#board').html(gameOver);
+}
+
+// var ships = []
 
 //if ship is clicked add to score
 //else show ship again
