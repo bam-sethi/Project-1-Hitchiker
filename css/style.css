@@ -52,10 +52,20 @@ h1{
   display: inline-block;
   margin: 0 auto;
   background-image: url("http://i.imgur.com/lP9gOQQ.png");  
-/*  background-image: url("http://i.giphy.com/12WQdoY19bowPm.gif");*/
   border: 50px solid black;
   border-radius: 7px;
 }
+/*.game-screen{
+  width: 800px;
+  height: 650px;
+  position: absolute;
+  display: inline-block;
+  margin: 0 auto;
+  background-image: url("http://i.imgur.com/lP9gOQQ.png");  
+  border: 50px solid black;
+  border-radius: 7px;
+}*/
+
 .box3{
   width: 200px;
   display: inline-block;
