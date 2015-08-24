@@ -50,10 +50,6 @@ function randomPos(){
   }
 };
 
-function endScreen() {
-  var gameOver = '<div id ="game-over">GAME OVER<button class="play" id="play-again">PLAY AGAIN</button></div>'
-  var end = $('#board').html(gameOver);
-}
 
 // var ships = []
 
@@ -65,7 +61,6 @@ function endScreen() {
 //Count Score
 var score = 0;
 
-
 ///find a way to call what is clicked on, not the specific ship
 function clickSpaceShip(event){
   console.log(this);
@@ -75,14 +70,15 @@ function clickSpaceShip(event){
 //diff between this and event target
   $('#ship1').on('click', function(){
     console.log('spaceship this', this);
-    $("#ship1").hide().delay(300).queue(function(n) {
-      $(this).show(); 
-      n();
-    });
+    $("#ship1").hide().delay(500).queue(function(n) { $(this).show(); n();});
     score++;
     getScore()
   })
 };
+// function explode() {
+//   var explode ='<img src="http://i.imgur.com/ROvcbz5.png" alt="explosion" class="explode">'
+//   $('#ship1').html(explode).css({'display': ''});
+// }
 
 function getScore(){
   console.log(score)
@@ -91,7 +87,19 @@ function getScore(){
   var map = $('#right-col').html("Your Score: " + sum);
 }
 
+function endScreen() {
+  var gameOver = '<div id ="game-over">GAME OVER<button class="play" id="play-again">PLAY AGAIN</button></div>'
+  var end = $('#board').html(gameOver);
+  playAgain();
+}
 
+
+function playAgain(){
+    $("#play-again").one('click',function(){
+    changeBackgroundThenCreateShip();
+  });
+
+}
 
 
 

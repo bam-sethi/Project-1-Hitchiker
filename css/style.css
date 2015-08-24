@@ -14,7 +14,7 @@ body{
   background-color: black;
   background-size: cover;
   font-family: 'Montserrat', sans-serif;
-  color: white;
+  color: black;
 }
 h1{
   font-size: 100px;
@@ -109,11 +109,14 @@ button{
   border-radius: 50%;
 }
 #play-again{
-  background-color: white;
-  font-size: 15px;
+  background-color: yellow;
+  font-size: 20px;
   color: black;
   height: 50px;
-  width: 100px;
-  border-radius: 0;
+  width: 200px;
+  border-radius: 10px;
   text-align: center;
+}
+.explode{
+  display: none;
 }
