@@ -3,8 +3,8 @@ var roundCount;
 //array of spaceships
 var spaceships = [];
 var spaceshipInterval;
-var score = 0;
-
+var score;
+var sum;
 
 $(document).ready(function(){
   $("#play-button").one('click', startGame)
@@ -13,6 +13,7 @@ $(document).ready(function(){
 
 function startGame() {
   roundCount = 0;
+  score = 0;
   $('#start-screen').hide()
   var gameScreen = '<div class = "game-screen"></div>';
   $('#board').html(gameScreen);
@@ -43,7 +44,7 @@ function changeBackgroundThenCreateShip(){
 
 function createSpaceship(){
   //round count the number of rounds
-  if (roundCount >= 2) {
+  if (roundCount >= 10) {
     endScreen()
     console.log(roundCount)
     console.log('why')
@@ -60,10 +61,15 @@ function createSpaceship(){
     var ship = $('<div class="ship"></div>');
 
     // adding more ships if score is higher
+    console.log(score);
+    console.log(sum);
+    getScore();
+
     var numShips = 3;
-    // if (score>50){
-    //   numShips+=1;
-    // }
+    if (sum > 50){
+    console.log('ship50');
+    numShips = 10;
+    }
     for (var j = 0; j < numShips; j++) {
       var clonedShip = ship.clone()
       spaceships.push(clonedShip);
@@ -101,7 +107,7 @@ function clickSpaceShip(event){
 
 function getScore(){
   console.log(score);
-  var sum = score * 10;
+  sum = score * 10;
   console.log(sum);
   $('#left-col').html("score: " + sum);
 }
@@ -114,29 +120,10 @@ function endScreen() {
 
 
 function playAgainButtonListener(){
-  $("#play-again").on('click',function(){
-    console.log('play again')
-    startGame();
-  });
+  $("#play-again").on('click', startGame);
 }
 
 //if score greater than 50 make interval shorter
-
-
-// function miserableMarvin(){
-//   var marvin =  '<img src="http://i.imgur.com/iBPaawF.png" alt="marvin-the-robot" id="marvin">'
-//   $('#board').append(marvin) 
-//   console.log(marvin);
-//   var newPos= Math.random() * ($('#board').width() - marvin.width());
-//   var newPos2 = Math.random() * ($('#board').height() - marvin.height());
-//   marvin.css({'left': newPos, 'top': newPos2});
-
-// }
-
-  // var marvinMove = setInterval(miserableMarvin, 1000);
-
-
-
 
 
 
