@@ -42,7 +42,7 @@ function changeBackgroundThenCreateShip(){
 
 function createSpaceship(){
   //round count the number of rounds
-  if (roundCount >= 3) {
+  if (roundCount >= 5) {
     endScreen()
     console.log(roundCount)
     console.log('why')
@@ -77,29 +77,20 @@ function randomPos(ship){
   $(ship).css({'left': newLeft, 'top': newTop})
 };
 
-//if ship is clicked add to score
-//else show ship again
-//Hide and Show space ship on Click 
-//Count Score to display to user
+//if ship is clicked add to score else show ship again
+//Hide and Show space ship on Click and count Score to display to user
 var score = 0;
-///find a way to call what is clicked on, not the specific ship
 function clickSpaceShip(event){
-  // console.log(this);
-//use event.target but will have to define what the target is 
-//like maybe class target?
-//look up handller
-//diff between this and event target
   $('.ship').on('click', function(){
     console.log('spaceship this', this);
-    $(this).hide()
+    ///\/\/\/\/\/\/
+    var explode ='<img src="http://i.imgur.com/ROvcbz5.png" alt="explosion" class="explode">'
+    $(this).html(explode).show()
     score++;
     getScore()
   })
 };
-// function explode() {
-//   var explode ='<img src="http://i.imgur.com/ROvcbz5.png" alt="explosion" class="explode">'
-//   $('#ship1').html(explode).css({'display': ''});
-// }
+
 
 function getScore(){
   console.log(score);

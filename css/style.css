@@ -52,7 +52,7 @@ h1{
   float: left;
 }
 .box2{
-  z-index: 1;
+  overflow: hidden;
   width: 800px;
   height: 650px;
   position: absolute;
@@ -61,7 +61,7 @@ h1{
   background-image: url("http://i.imgur.com/lP9gOQQ.png");  
   border: 50px solid black;
   border-radius: 7px;
-  /*cursor:  url(foo.cur), url("http://i.imgur.com/Cp9Dihz.png"), auto;*/
+/*  cursor:  url(foo.cur), url("http://i.imgur.com/7Wm2dJT.png"), auto;*/
 }
 /*.game-screen{
   width: 800px;
@@ -126,9 +126,12 @@ button{
   text-align: center;
   padding: 100px;
 }
-.explode{
-  display: none;
-}
+/*.explode{
+  top: 0;
+  left: 0;
+  height: 150px;
+  width: 150px;
+}*/
 .vogon{
   width: 150px;
   height: 150px;
