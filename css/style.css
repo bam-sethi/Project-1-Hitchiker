@@ -117,7 +117,7 @@ button{
 }
 .ship{
   position: relative;
-  background-image: url(/Users/ambar/fundamentals/Projects/project-1/hitchiker/images/ship.png);
+  background-image: url('../images/ship.png');
   width: 100px;
   height: 100px;
 }
