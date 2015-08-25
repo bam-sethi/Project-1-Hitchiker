@@ -1,11 +1,5 @@
 
-/**{
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}*/
-
-body{/*
-  margin: 50px;*/
+body{
   background-color: black;
   /*background-image: url("http://i.imgur.com/SjY2G9G.png");*/
   background-image: url("https://i.imgur.com/DOFhICG.png");
@@ -74,7 +68,7 @@ p{
   display: inline-block;
   margin: 0 auto;
   background-color: black;
-  font-size: 50px;
+  font-size: 100px;
   text-align: center;
   color: green;
 }
@@ -86,7 +80,6 @@ p{
   margin: 0 auto;
   background-color: black;
   font-size: 50px;
-  /*text-align: center;*/
   color: pink;
 }
 button{
@@ -113,7 +106,6 @@ button{
   width: 120px;
   border-radius: 50%;
   text-align: center;
-
 }
 .ship{
   position: relative;
@@ -121,12 +113,6 @@ button{
   width: 100px;
   height: 100px;
 }
-/*.explode{
-  top: 0;
-  left: 0;
-  height: 150px;
-  width: 150px;
-}*/
 .vogon{
   width: 150px;
   height: 150px;
@@ -137,6 +123,4 @@ button{
   margin-left: 850px;
   width: 250px;
   height:250px;
-
-
 }

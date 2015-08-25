@@ -23,9 +23,7 @@ function startGame() {
 
 //when play button clicked ^ change splash screen to game screen
 function changeBackgroundThenCreateShip(){
-    // $('#start-screen').hide()
-    // var gameScreen = '<div class = "game-screen"></div>';
-    // $('#board').html(gameScreen);
+
 
     // create ship only after background has been changed
     // every n secs delete all ships and create new ones
@@ -44,7 +42,7 @@ function changeBackgroundThenCreateShip(){
 
 function createSpaceship(){
   //round count the number of rounds
-  if (roundCount >= 10) {
+  if (roundCount >= 30) {
     endScreen()
     console.log(roundCount)
     console.log('why')
