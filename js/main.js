@@ -1,121 +1,87 @@
-///generates a random position on the board, applies it to ship every 2 secs
-var count = 0;
-var newShip;
-var roundCount = 0
+//how many times ships appear//alter this altr game length
+var roundCount = 0;
+//array of spaceships
+var spaceships = [];
 
-var spaceships = []
 
 $(document).ready(function(){
   playButtonListener();
-});//end doc ready
+});
+
 
 function playButtonListener() {
   $("#play-button").one('click',function(){
+    $('#start-screen').hide()
+    var gameScreen = '<div class = "game-screen"></div>';
+    $('#board').html(gameScreen);
     changeBackgroundThenCreateShip();
   });
 };
 
-function changeBackgroundThenCreateShip(){
-    $('#start-screen').hide()
-    var gameScreen = '<div class = "game-screen"></div>';
-    $('#board').html(gameScreen);
 
-    // create ship after b/g has been changed
-    createSpaceship();  
+//when play button clicked ^ change splash screen to game screen
+function changeBackgroundThenCreateShip(){
+    // $('#start-screen').hide()
+    // var gameScreen = '<div class = "game-screen"></div>';
+    // $('#board').html(gameScreen);
+
+    // create ship only after background has been changed
+    // every n secs delete all ships and create new ones
+    createSpaceship();
+    var spaceshipInterval = setInterval(function(){
+      spaceships.forEach(function(element, index) {
+        //remove it from the board
+        element.fadeOut(50).remove();
+      })
+      //remove it from the array
+      spaceships.splice(0);
+      //then run create again
+      createSpaceship();
+    }, 1500) ; 
 };
 
 function createSpaceship(){
+  //round count the number of rounds
   if (roundCount >= 3) {
+    endScreen()
     console.log(roundCount)
+    console.log('why')
     // console.log(spaceshipInterval)
     spaceships.splice(0)
     for (var i = 1; i < 99999; i++) {
-      window.clearInterval(i);
+      this.clearInterval(i);
     }
-
     console.log('play the damn game!')
-  } else {
-
-    // var ship1 = '<div id="ship1" class="ship"></div>';
-    // $("#board").append(ship1);
-
+  } 
+  else {
+    console.log(roundCount);
     var ship = $('<div class="ship"></div>');
-    for (var i = 0; i < 2; i++) {
-      // newShip = $('<div class="ship" />');
+    for (var j = 0; j < 3; j++) {
       var clonedShip = ship.clone()
       spaceships.push(clonedShip);
-      
       randomPos(clonedShip);
     }
 
-    var spaceshipInterval = setInterval(function() {
-      roundCount++
-      spaceships.forEach(function(element, index) {
-        element.fadeOut(50).remove();
-      })
-      spaceships.splice(0)
-      createSpaceship()
-    }, 1500)
-
-
-
-    // var ship2 = '<div id="ship2" class="ship"></div>';
-    // $("#board").append(ship2);
-    // only change position once it's been created
+    roundCount++;
     clickSpaceShip();
   }
 }
 
 function randomPos(ship){
-  // count++;
-  // debugger
-
-  // var position = $(ship).position();
   $('#board').append(ship)
   ship.hide().fadeIn(50);
-
   // console.log(count);
   var newLeft = Math.floor(Math.random() * $('#board').width());
   // console.log(newLeft)
   var newTop = Math.floor(Math.random() * $('#board').height());
   $(ship).css({'left': newLeft, 'top': newTop})
-  // var time = setTimeout(randomPos, 1500);
-
-
-
-    // debugger;
-    ///change count to higher num
-  // if (count === 10){
-  //   console.log('end')
-  //   clearTimeout(time);
-  //   endScreen();
-  // }
 };
-
-
-
-// var newShip;
-// for (var i = 0; i < 10; i++) {
-//     newShip = $('<div class="ship" />').text(i);
-//     $('#board').append(newShip);
-// }
-
-
-
-// function whichShips(firstShip, secondShip) {
-//   //how to have many ships appear at the same time at random interval
-//   var shipArray = ['ship1', 'ship2']
-//   newShip = Math.floor(Math.random() * shipArray.length)
-
-// }
-
 
 //if ship is clicked add to score
 //else show ship again
 //Hide and Show space ship on Click 
 //Count Score to display to user
 var score = 0;
-
 ///find a way to call what is clicked on, not the specific ship
 function clickSpaceShip(event){
   // console.log(this);
@@ -126,7 +92,6 @@ function clickSpaceShip(event){
   $('.ship').on('click', function(){
     console.log('spaceship this', this);
     $(this).hide()
-    // .delay(500).queue(function(n) { $(this).show(); n();});
     score++;
     getScore()
   })
@@ -137,7 +102,7 @@ function clickSpaceShip(event){
 // }
 
 function getScore(){
-  console.log(score)
+  console.log(score);
   var sum = score * 10;
   console.log(sum);
   var map = $('#right-col').html("Your Score: " + sum);
@@ -149,17 +114,32 @@ function endScreen() {
   playAgain();
 }
 
-
 function playAgain(){
-    $("#play-again").one('click',function(){
-    changeBackgroundThenCreateShip();
+    $("#play-again").on('click',function(){
+      $('#game-over').hide()
+      var gameScreen = '<div class = "game-screen"></div>';
+      $('#board').html(gameScreen);
+      roundCount = 0;
+     changeBackgroundThenCreateShip(); 
   });
-
 }
 
 
 
 
+
+// function miserableMarvin(){
+//   var marvin =  '<img src="http://i.imgur.com/iBPaawF.png" alt="marvin-the-robot" id="marvin">'
+//   $('#board').append(marvin) 
+//   console.log(marvin);
+//   var newPos= Math.random() * ($('#board').width() - marvin.width());
+//   var newPos2 = Math.random() * ($('#board').height() - marvin.height());
+//   marvin.css({'left': newPos, 'top': newPos2});
+
+// }
+
+  // var marvinMove = setInterval(miserableMarvin, 1000);
+  // console.log(moveShipPos)
 
 
 
