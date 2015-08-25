@@ -2,6 +2,8 @@
 var roundCount = 0;
 //array of spaceships
 var spaceships = [];
+var spaceshipInterval;
+var score = 0;
 
 
 $(document).ready(function(){
@@ -28,7 +30,7 @@ function changeBackgroundThenCreateShip(){
     // create ship only after background has been changed
     // every n secs delete all ships and create new ones
     createSpaceship();
-    var spaceshipInterval = setInterval(function(){
+      spaceshipInterval = setInterval(function(){
       spaceships.forEach(function(element, index) {
         //remove it from the board
         element.fadeOut(50).remove();
@@ -42,7 +44,7 @@ function changeBackgroundThenCreateShip(){
 
 function createSpaceship(){
   //round count the number of rounds
-  if (roundCount >= 5) {
+  if (roundCount >= 10) {
     endScreen()
     console.log(roundCount)
     console.log('why')
@@ -54,14 +56,14 @@ function createSpaceship(){
     console.log('play the damn game!')
   } 
   else {
+    console.log('hi')
     console.log(roundCount);
     var ship = $('<div class="ship"></div>');
     for (var j = 0; j < 3; j++) {
       var clonedShip = ship.clone()
       spaceships.push(clonedShip);
       randomPos(clonedShip);
-    }
-
+    }  
     roundCount++;
     clickSpaceShip();
   }
@@ -79,11 +81,10 @@ function randomPos(ship){
 
 //if ship is clicked add to score else show ship again
 //Hide and Show space ship on Click and count Score to display to user
-var score = 0;
+
 function clickSpaceShip(event){
   $('.ship').on('click', function(){
     console.log('spaceship this', this);
-    ///\/\/\/\/\/\/
     var explode ='<img src="http://i.imgur.com/ROvcbz5.png" alt="explosion" class="explode">'
     $(this).html(explode).show()
     score++;
@@ -96,27 +97,30 @@ function getScore(){
   console.log(score);
   var sum = score * 10;
   console.log(sum);
-  var map = $('#right-col').html("Your Score: " + sum);
+  $('#left-col').html("score: " + sum);
 }
 
 function endScreen() {
   var gameOver = '<div id ="game-over">GAME OVER<img src="http://i.imgur.com/sKWrXQi.png" alt="vogon" class="vogon"><button class="play" id="play-again">PLAY AGAIN</button></div>'
   var end = $('#board').html(gameOver);
-  playAgain();
+  playAgainButtonListener();
 }
 
-function playAgain(){
+
+function playAgainButtonListener(){
+     
     $("#play-again").on('click',function(){
-      $('#game-over').hide()
-      var gameScreen = '<div class = "game-screen"></div>';
-      $('#board').html(gameScreen);
-      roundCount = 0;
-     changeBackgroundThenCreateShip(); 
+     
+      $('#game-over').remove();
+       roundCount = 0;
+      createSpaceship();
+      console.log('again');
+      changeBackgroundThenCreateShip()
   });
+
 }
 
-
-
+//if score greater than 50 make interval shorter
 
 
 // function miserableMarvin(){
@@ -130,7 +134,6 @@ function playAgain(){
 // }
 
   // var marvinMove = setInterval(miserableMarvin, 1000);
-  // console.log(moveShipPos)
 
 
 
