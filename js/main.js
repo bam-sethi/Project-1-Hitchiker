@@ -54,19 +54,18 @@ function createSpaceship(){
     console.log('play the damn game!')
   } 
   else {
-    console.log('hi')
-    console.log(roundCount);
+    // console.log('hi')
+    // console.log(roundCount);
     var ship = $('<div class="ship"></div>');
 
     // adding more ships if score is higher
-    console.log(score);
-    console.log(sum);
+    // console.log(score);
+    // console.log(sum);
     getScore();
-
     var numShips = 3;
     if (sum > 50){
-    console.log('ship50');
-    numShips = 10;
+      console.log('ship50');
+      numShips = 8;
     }
     for (var j = 0; j < numShips; j++) {
       var clonedShip = ship.clone()
@@ -94,7 +93,7 @@ function randomPos(ship){
 
 function clickSpaceShip(event){
   $('.ship').on('click', function(){
-    console.log('spaceship this', this);
+    // console.log('spaceship this', this);
     var explode ='<img src="http://i.imgur.com/ROvcbz5.png" alt="explosion" class="explode">'
     $(this).html(explode).show()
     score++;
@@ -104,15 +103,18 @@ function clickSpaceShip(event){
 
 
 function getScore(){
-  console.log(score);
+  // console.log(score);
   sum = score * 10;
-  console.log(sum);
   $('#left-col').html("score: " + sum);
 }
 
 function endScreen() {
   var gameOver = '<div id ="game-over">GAME OVER<img src="http://i.imgur.com/sKWrXQi.png" alt="vogon" class="vogon"><button class="play" id="play-again">PLAY AGAIN</button></div>'
-  var end = $('#board').html(gameOver);
+  var end = $('#board').html(gameOver)
+  // if (sum < 200){
+  //   console.log('marvin')
+  //   marvinSpeaks()
+  // }
   playAgainButtonListener();
 }
 
@@ -121,7 +123,21 @@ function playAgainButtonListener(){
   $("#play-again").on('click', startGame);
 }
 
-//if score greater than 50 make interval shorter
+// function marvinSpeaks() {
+//     if (sum < 200){
+//     console.log('marvin')
+//     var marvin = '<img src="http://i.imgur.com/beFGjUA.png" alt="marvin id="robo">'
+//     $('#right-col').html(marvin) 
+//     }
+// }
 
+//under 200 points marvin appear 'the universer boring'
+//over 200 and under 300 marvin 'the computer hates me'
+//over 300 and under 500 marvin 'the bridge brain'
+//over 500 -find a funner one
 
+//also make score board clearer
+
+//sound background
+//put marvin on side of board if score thing give marvin speak bubble
 

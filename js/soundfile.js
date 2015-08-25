@@ -1,25 +1,18 @@
-  // console.log('hisound')
+console.log('hi sound')
 
-  // soundManager.setup({
-  //   url: 'music/',
-  //   flashVersion: 9,
-  //   preferFlash: false,
-  //   onready: function() {
-  //     // martinSpeak();
-      
-  //   }
-  // }); 
+soundManager.setup({
+    // where to find the SWF files, if needed
+    url: '../music/',
 
-// var mySound = soundManager.createSound({
-//  url: 'sounds/ithatesme.mp3'
-// });
-// mySound.play();
+    onready: function() {
+      var soundtrack = soundManager.createSound({
+      url: '/Users/ambar/fundamentals/Projects/project-1/hitchiker/sounds/inverse.mp3'
+      });
+      soundtrack.play();
 
+    },
 
-
-//   function martinSpeak() {
-//      soundManager.url = 'swf/soundmanager2.swf'; // path to movie     
-//      soundManager.onload = function() {  //   
-//     soundManager.createSound({id:'marvin-speak', url:'sounds/ithatesme.mp3'});
-//   }
-// };
+    ontimeout: function() {
+      // Uh-oh. No HTML5 support, SWF missing, Flash blocked or other issue
+    }
+});
